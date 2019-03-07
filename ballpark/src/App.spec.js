@@ -4,8 +4,6 @@ import { render, fireEvent } from 'react-testing-library';
 import 'jest-dom/extend-expect'; 
 
 import App from './App';
-import Display from './display/Display';
-import Dashboard from './dashboard/Dashboard';
 
 describe('<App />', () => {
 
