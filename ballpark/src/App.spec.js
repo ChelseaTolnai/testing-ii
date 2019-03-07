@@ -22,7 +22,7 @@ describe('<App />', () => {
     expect(getByTestId('strikes').textContent).toBe('0');
   });
 
-  it('outcome(foul) resets balls and strikes', () => {
+  it('outcome(foul) adds count to strikes up to 2, () => {
     const { getByText} = render(<Dashboard />);
     const { getByTestId } = render(<Display />);
     fireEvent.click(getByText(/foul/i));
@@ -31,6 +31,17 @@ describe('<App />', () => {
     expect(getByTestId('strikes').textContent).toBe('2');
     fireEvent.click(getByText(/foul/i));
     expect(getByTestId('strikes').textContent).toBe('2');
+  });
+
+  it('outcome(strike) counts to strike and resets at 3', () => {
+    const { getByText} = render(<Dashboard />);
+    const { getByTestId } = render(<Display />);
+    fireEvent.click(getByText(/strike/i));
+    expect(getByTestId('strikes').textContent).toBe('1');
+    fireEvent.click(getByText(/strike/i));
+    expect(getByTestId('strikes').textContent).toBe('2');
+    fireEvent.click(getByText(/strike/i));
+    expect(getByTestId('strikes').textContent).toBe('0');
   });
 
 })
