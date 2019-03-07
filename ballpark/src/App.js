@@ -24,8 +24,20 @@ class App extends Component {
     );
   }
 
-  handleSwingOutcome() {
-    
+  handleSwingOutcome(event) {
+    const outcome = event.target
+    switch(outcome) {
+      case('strike'):
+        break;
+      case('ball'):
+        break;    
+      case('foul'):
+        break;
+      case('hit'):
+        break;  
+      default:
+        throw new Error('Invalid outcome.')
+    }
   }
 }
 

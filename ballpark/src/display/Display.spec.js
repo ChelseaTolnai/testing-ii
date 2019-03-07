@@ -4,7 +4,6 @@ import { render } from 'react-testing-library';
 import 'jest-dom/extend-expect'; 
 
 import Display from './Display';
-import App from '../App'
 
 describe('<Display />', () => {
 
