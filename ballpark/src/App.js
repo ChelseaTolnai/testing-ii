@@ -13,31 +13,49 @@ class App extends Component {
   render() {
     return (
       <>
-        <Display 
+        <Display
           balls={this.state.balls}
-          strikes={this.state.strikes}  
+          strikes={this.state.strikes}
         />
-        <Dashboard 
+        <Dashboard
           handleSwingOutcome={this.handleSwingOutcome}
         />
       </>
     );
   }
 
-  handleSwingOutcome(event) {
-    const outcome = event.target
-    switch(outcome) {
-      case('strike'):
+  handleSwingOutcome = (event) => {
+    const outcome = event.target.textContent;
+    let { balls, strikes } = this.state;
+    switch (outcome) {
+      case ('Strike'):
+        if(strikes < 2) {strikes++}
+        else {
+          balls = 0;
+          strikes = 0;
+        }
         break;
-      case('ball'):
-        break;    
-      case('foul'):
+      case ('Ball'):
+        if(balls < 3) {balls++}
+        else {
+          balls = 0;
+          strikes = 0;
+        }
         break;
-      case('hit'):
-        break;  
+      case ('Foul'):
+        if(strikes < 2) {strikes++}
+        break;
+      case ('Hit'):
+        balls = 0;
+        strikes = 0;
+        break;
       default:
-        throw new Error('Invalid outcome.')
+        throw new Error('Invalid outcome.');
     }
+    this.setState({
+      balls,
+      strikes,
+    })
   }
 }
 
