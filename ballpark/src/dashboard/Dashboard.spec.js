@@ -11,4 +11,13 @@ describe('<Dashboard />', () => {
     render(<Dashboard />);
   });
 
+  it('confirms header and buttons', () => {
+    const { getByText } = render(<Dashboard />);
+    expect(getByText(/Swing Outcome/)).toBeInTheDocument();
+    expect(getByText(/ball/i)).toBeInTheDocument();
+    expect(getByText(/strike/i)).toBeInTheDocument();
+    expect(getByText(/foul/i)).toBeInTheDocument();
+    expect(getByText(/hit/i)).toBeInTheDocument();
+  })
+
 })
