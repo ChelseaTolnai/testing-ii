@@ -4,6 +4,7 @@ function Dashboard(props) {
 
     return (
         <>
+            <h4>Swing Outcome</h4>
             <button onClick={props.handleSwingOutcome}>Strike</button>
             <button onClick={props.handleSwingOutcome}>Ball</button>
             <button onClick={props.handleSwingOutcome}>Foul</button>
