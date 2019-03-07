@@ -18,7 +18,7 @@ class App extends Component {
           strikes={this.state.strikes}
         />
         <Dashboard
-          handleSwingOutcome={this.handleSwingOutcome}
+          Outcome={this.handleSwingOutcome}
         />
       </>
     );
@@ -29,14 +29,18 @@ class App extends Component {
     let { balls, strikes } = this.state;
     switch (outcome) {
       case ('Strike'):
-        if(strikes < 2) {strikes++}
+        if(strikes < 2) {
+          strikes = this.state.strikes + 1
+        }
         else {
           balls = 0;
           strikes = 0;
         }
         break;
       case ('Ball'):
-        if(balls < 3) {balls++}
+        if(balls < 3) {
+          balls = this.state.balls + 1
+        }
         else {
           balls = 0;
           strikes = 0;
