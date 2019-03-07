@@ -13,8 +13,8 @@ function Display(props) {
 
             <tbody>
                 <tr >
-                    <td>{props.strikes}</td>
-                    <td>{props.balls}</td>
+                    <td data-testid='strikes'>{props.strikes}</td>
+                    <td data-testid='balls'>{props.balls}</td>
                 </tr>
             </tbody>
 
