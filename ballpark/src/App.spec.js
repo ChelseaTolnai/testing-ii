@@ -15,15 +15,22 @@ describe('<App />', () => {
 
   it('outcome(hit) resets balls and strikes', () => {
     const { getByText} = render(<Dashboard />);
-    const hit = getByText(/hit/i);
-    fireEvent.click(hit);
+    fireEvent.click(getByText(/hit/i));
 
     const { getByTestId } = render(<Display />);
-    const balls = getByTestId('balls');
-    const strikes = getByTestId('strikes');
-    expect(balls.textContent).toBe('0');
-    expect(strikes.textContent).toBe('0');
+    expect(getByTestId('balls').textContent).toBe('0');
+    expect(getByTestId('strikes').textContent).toBe('0');
+  });
 
+  it('outcome(foul) resets balls and strikes', () => {
+    const { getByText} = render(<Dashboard />);
+    const { getByTestId } = render(<Display />);
+    fireEvent.click(getByText(/foul/i));
+    expect(getByTestId('strikes').textContent).toBe('1');
+    fireEvent.click(getByText(/foul/i));
+    expect(getByTestId('strikes').textContent).toBe('2');
+    fireEvent.click(getByText(/foul/i));
+    expect(getByTestId('strikes').textContent).toBe('2');
   });
 
 })
